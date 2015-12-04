@@ -1023,7 +1023,15 @@ def calculatePaperNeededForBoxes(data):
     return sum(map(calculatePaperNeededForBox, dims))
 
 def calculateRibbonNeededForBox(l):
-    del l[l.index(l.max())]
+    bow = l[0] * l[1] * l[2]
+    del l[l.index(max(l))]
 
-print(calculateRibbonNeededForBox([1,2,3]))
+    return 2*l[0] + 2*l[1] + bow
+
+def calculateRibbonNeededForBoxes(data):
+    dims = parseData(data)
+
+    return sum(map(calculateRibbonNeededForBox, dims))
+
+print(calculateRibbonNeededForBoxes(data))
 print(calculatePaperNeededForBoxes(data))
