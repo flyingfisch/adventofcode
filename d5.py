@@ -1021,7 +1021,7 @@ def stringIsNice(s):
         i += 1
 
     for n in naughtyStrings:
-        if s.find(n) > 0:
+        if n in s:
             doesNotContainNaughtyStrings = False
 
     return (numOfVowels >= 3) and containsDoubles and doesNotContainNaughtyStrings
