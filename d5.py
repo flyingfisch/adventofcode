@@ -999,6 +999,8 @@ iduapzclhhyfladn
 fbpyzxdfmkrtfaeg
 yzsmlbnftftgwadz"""
 
+import re
+
 def stringIsNice(s):
     vowels = ['a', 'e', 'i', 'o', 'u']
     naughtyStrings = ['ab', 'cd', 'pq', 'xy']
@@ -1026,24 +1028,29 @@ def stringIsNice(s):
 
     return (numOfVowels >= 3) and containsDoubles and doesNotContainNaughtyStrings
 
-# Tests
-print(stringIsNice('ugknbfddgicrmopn'))
-print(stringIsNice('aaa'))
-print(stringIsNice('aa'))
-print(stringIsNice('jchzalrnumimnmhp'))
-print(stringIsNice('haegwjzuvuyypxyu'))
-print(stringIsNice('dvszwmarrgswjxmb'))
-print(stringIsNice('afajisfhj'))
-print(stringIsNice('afajsfhjj'))
-print(stringIsNice('qqqqqqqqqqq'))
-print(stringIsNice('afajsabfhjj'))
-print(stringIsNice('afajsabfhjj'))
-print(stringIsNice('afajsabfhjj'))
 
-# Actual Calculation
+def stringIsNice2(s):
+    containsPairNoOverlap = bool(re.search(r'(..).*\1', s))
+    containsPairOneLetterBetween = bool(re.search(r'(.).\1', s))
+
+    return containsPairNoOverlap and containsPairOneLetterBetween
+
+
 goodStrings = 0
 for s in listOfStrings.split('\n'):
     if stringIsNice(s):
         goodStrings += 1
 
 print(goodStrings)
+
+goodStrings2 = 0
+for s in listOfStrings.split('\n'):
+    if stringIsNice2(s):
+        goodStrings2 += 1
+
+print(stringIsNice2("qjhvhtzxzqqjkmpb"))
+print(stringIsNice2("xxyxx"))
+print(stringIsNice2("uurcxstgmygtbstg"))
+print(stringIsNice2("ieodomkazucvgmuy"))
+
+print(goodStrings2)
