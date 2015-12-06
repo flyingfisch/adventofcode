@@ -81,7 +81,7 @@ print(numberLit)
 
 totalLit = 0
 
-for i in arr:
+for i in arr2:
     totalLit += sum(i)
 
 print(totalLit)
